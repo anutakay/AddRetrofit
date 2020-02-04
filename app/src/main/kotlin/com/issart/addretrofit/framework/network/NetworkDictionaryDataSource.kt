@@ -13,7 +13,7 @@ class NetworkDictionaryDataSource(
         safeApiCall(
             {
                 dictionaryApi.getLangs(key)
-                throw IOException("My exception")
+                //throw IOException("My exception")
             },
             "Error during fetching list of languages"
         )
