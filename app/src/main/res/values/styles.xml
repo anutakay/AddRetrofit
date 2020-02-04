@@ -1,11 +1,107 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="android:textColorPrimary">@color/primaryTextColor</item>
+        <item name="colorAccent">@color/secondaryColor</item>
+        <item name="android:textColorSecondary">@color/secondaryTextColor</item>
+    </style>
+
+    <!-- base Roboto text styles -->
+
+    <style name="TextAppearance.LightFont" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="fontFamily">@font/roboto_light</item>
+    </style>
+
+    <style name="TextAppearance.RegularFont" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="TextAppearance.MediumFont" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <!-- material Roboto text styles -->
+
+    <style name="TextAppearance.Material.Headline1" parent="TextAppearance.LightFont">
+        <item name="android:textSize">96sp</item>
+        <item name="android:lineSpacingMultiplier">1</item>
+        <item name="android:letterSpacing">-0.015625</item>
+    </style>
+
+    <style name="TextAppearance.Material.Headline2" parent="TextAppearance.LightFont">
+        <item name="android:textSize">60sp</item>
+        <item name="android:lineSpacingMultiplier">1</item>
+        <item name="android:letterSpacing">-0.00833</item>
+    </style>
+
+    <style name="TextAppearance.Material.Headline3" parent="TextAppearance.RegularFont">
+        <item name="android:textSize">48sp</item>
+        <item name="android:lineSpacingMultiplier">1</item>
+    </style>
+
+    <style name="TextAppearance.Material.Headline4" parent="TextAppearance.RegularFont">
+        <item name="android:textSize">34sp</item>
+        <item name="android:lineSpacingMultiplier">1</item>
+        <item name="android:letterSpacing">0.01471</item>
+    </style>
+
+    <style name="TextAppearance.Material.Headline5" parent="TextAppearance.RegularFont">
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineSpacingMultiplier">1</item>
+    </style>
+
+    <style name="TextAppearance.Material.Headline6" parent="TextAppearance.MediumFont">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingMultiplier">1</item>
+        <item name="android:letterSpacing">0.0075</item>
+    </style>
+
+    <style name="TextAppearance.Material.Body1" parent="TextAppearance.RegularFont">
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineSpacingMultiplier">1.56</item>
+        <item name="android:letterSpacing">0.02778</item>
+    </style>
+
+    <style name="TextAppearance.Material.Body2" parent="TextAppearance.RegularFont">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">1.43</item>
+        <item name="android:letterSpacing">0.01786</item>
+    </style>
+
+    <style name="TextAppearance.Material.Subtitle1" parent="TextAppearance.RegularFont">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
+        <item name="android:letterSpacing">0.00938</item>
+    </style>
+
+    <style name="TextAppearance.Material.Subtitle2" parent="TextAppearance.MediumFont">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">1.71</item>
+    </style>
+
+    <style name="TextAppearance.Material.Button" parent="TextAppearance.MediumFont">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">1.14</item>
+        <item name="android:letterSpacing">0.05357</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.Material.Caption" parent="TextAppearance.RegularFont">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingMultiplier">1.33</item>
+        <item name="android:letterSpacing">0.03333</item>
+    </style>
+
+    <style name="TextAppearance.Material.Overline" parent="TextAppearance.MediumFont">
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingMultiplier">1.6</item>
+        <item name="android:letterSpacing">0.15</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
 </resources>
