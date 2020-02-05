@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.issart.addretrofit.AppViewModel
 import com.issart.addretrofit.Interactors
-import com.issart.addretrofit.domain.Languages
+import com.issart.addretrofit.LanguagesEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -16,9 +16,9 @@ class LanguagesViewModel(
     interactors: Interactors
 ) : AppViewModel(app, interactors) {
 
-    val list = MutableLiveData<List<Languages>>()
-    private val selectLanguages = MutableLiveData<Languages>()
-    val openLanguages = MediatorLiveData<Languages>()
+    val list = MutableLiveData<List<LanguagesEntity>>()
+    private val selectLanguages = MutableLiveData<LanguagesEntity>()
+    val openLanguages = MediatorLiveData<LanguagesEntity>()
 
     init {
         openLanguages.apply {
@@ -40,5 +40,5 @@ class LanguagesViewModel(
     }
 
     fun loadOpenLanguages() = openLanguages.postValue(interactors.getOpenLanguages())
-    fun selectLanguages(lang: Languages) = selectLanguages.postValue(lang)
+    fun selectLanguages(lang: LanguagesEntity) = selectLanguages.postValue(lang)
 }

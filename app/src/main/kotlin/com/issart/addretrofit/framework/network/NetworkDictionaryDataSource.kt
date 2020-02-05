@@ -1,9 +1,8 @@
 package com.issart.addretrofit.framework.network
 
-import com.issart.addretrofit.data.datasources.DictionaryDataSource
-import com.issart.addretrofit.domain.DataResult
-import com.issart.addretrofit.domain.LookupResult
-import java.io.IOException
+import com.issart.addretrofit.LookupEntity
+import com.issart.addretrofit.core.DataResult
+import com.issart.addretrofit.datasources.DictionaryDataSource
 
 class NetworkDictionaryDataSource(
     private val dictionaryApi: DictionaryApi
@@ -22,5 +21,5 @@ class NetworkDictionaryDataSource(
         key: String,
         lang: String,
         word: String
-    ): DataResult<LookupResult> = safeApiCall({ dictionaryApi.lookup(key, lang, word) })
+    ): DataResult<LookupEntity> = safeApiCall({ dictionaryApi.lookup(key, lang, word) })
 }

@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.issart.addretrofit.AppViewModelFactory
+import com.issart.addretrofit.LanguagesEntity
 import com.issart.addretrofit.R
-import com.issart.addretrofit.domain.Languages
 import com.issart.addretrofit.presentation.IntentUtil
 import com.issart.addretrofit.presentation.IntentUtil.INPUT_LANGUAGE
 import com.issart.addretrofit.presentation.IntentUtil.OUTPUT_LANGUAGE
@@ -67,7 +67,8 @@ class LanguagesFragment : Fragment(), LanguagesRecyclerViewAdapter.InteractionLi
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_languages, container, false)
 
@@ -80,18 +81,20 @@ class LanguagesFragment : Fragment(), LanguagesRecyclerViewAdapter.InteractionLi
             adapter = this@LanguagesFragment.adapter
         }
 
-        viewModel.loadOpenLanguages()
-        viewModel.loadLanguagesList()
+        with(viewModel) {
+            loadOpenLanguages()
+            loadLanguagesList()
+        }
     }
 
-    override fun onSelected(lang: Languages) {
+    override fun onSelected(lang: LanguagesEntity) {
         viewModel.selectLanguages(lang)
         outputPort?.goToDictionary(lang)
     }
 
     interface InteractionListener {
         fun setCustomToolbar(toolbar: Toolbar)
-        fun goToDictionary(lang: Languages)
+        fun goToDictionary(lang: LanguagesEntity)
     }
 
     companion object {

@@ -5,15 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.issart.addretrofit.LanguagesEntity
 import com.issart.addretrofit.R
-import com.issart.addretrofit.domain.Languages
 
 class LanguagesRecyclerViewAdapter :
     RecyclerView.Adapter<LanguagesRecyclerViewAdapter.ViewHolder>() {
 
     var outputPort: InteractionListener? = null
 
-    var values: List<Languages> = emptyList()
+    var values: List<LanguagesEntity> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -42,6 +42,6 @@ class LanguagesRecyclerViewAdapter :
     }
 
     interface InteractionListener {
-        fun onSelected(lang: Languages)
+        fun onSelected(lang: LanguagesEntity)
     }
 }

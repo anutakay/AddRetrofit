@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.issart.addretrofit.AppViewModel
 import com.issart.addretrofit.Interactors
-import com.issart.addretrofit.domain.Languages
-import com.issart.addretrofit.domain.LookupResult
+import com.issart.addretrofit.LanguagesEntity
+import com.issart.addretrofit.LookupEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -15,13 +15,13 @@ class DictionaryViewModel(
     interactors: Interactors
 ) : AppViewModel(app, interactors) {
 
-    private val languages: MutableLiveData<Languages> = MutableLiveData()
-    val input = Transformations.map(languages, Languages::inputName)
-    val output = Transformations.map(languages, Languages::outputName)
+    private val languages: MutableLiveData<LanguagesEntity> = MutableLiveData()
+    val input = Transformations.map(languages, LanguagesEntity::inputName)
+    val output = Transformations.map(languages, LanguagesEntity::outputName)
 
     val word: MutableLiveData<String> = MutableLiveData()
 
-    private val rawLookupResult = MediatorLiveData<LookupResult>()
+    private val rawLookupResult = MediatorLiveData<LookupEntity>()
     val lookupResult: LiveData<String> = MediatorLiveData<String>().apply {
         addSource(rawLookupResult) { postValue(toString(it)) }
     }
@@ -37,8 +37,8 @@ class DictionaryViewModel(
 
     fun loadOpenLanguages() = languages.postValue(interactors.getOpenLanguages())
 
-    private fun lookup(word: String?, lang: Languages?) {
-        if (word == null || lang == null || lang == Languages.EMPTY) return
+    private fun lookup(word: String?, lang: LanguagesEntity?) {
+        if (word == null || lang == null || lang == LanguagesEntity.EMPTY) return
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 interactors.lookup.invoke(
@@ -48,7 +48,7 @@ class DictionaryViewModel(
         }
     }
 
-    private fun toString(lookup: LookupResult): String? {
+    private fun toString(lookup: LookupEntity): String? {
         if (lookup.def.isEmpty()) return "EMPTY RESULT"
         val definition = lookup.def[0]
         return when {

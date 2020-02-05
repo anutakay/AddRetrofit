@@ -1,18 +1,18 @@
 package com.issart.addretrofit
 
 import android.app.Application
-import com.issart.addretrofit.data.repositories.DictionaryRepositoryImpl
-import com.issart.addretrofit.data.repositories.SettingsRepositoryImpl
-import com.issart.addretrofit.domain.SimpleLanguagesConverter
+import com.issart.addretrofit.datasources.InMemoryOpenLanguagesDataSource
+import com.issart.addretrofit.repositories.dictionary.SimpleLanguagesConverter
 import com.issart.addretrofit.framework.device.ConfigApiKeyDataSource
-import com.issart.addretrofit.data.datasources.InMemoryOpenLanguagesDataSource
-import com.issart.addretrofit.framework.network.NetworkDictionaryDataSource
 import com.issart.addretrofit.framework.device.ResourcesLanguageNameDataSource
 import com.issart.addretrofit.framework.network.DictionaryApi
+import com.issart.addretrofit.framework.network.NetworkDictionaryDataSource
 import com.issart.addretrofit.interactors.languages.GetLanguages
 import com.issart.addretrofit.interactors.languages.GetOpenLanguages
 import com.issart.addretrofit.interactors.languages.SetOpenLanguages
 import com.issart.addretrofit.interactors.lookup.Lookup
+import com.issart.addretrofit.repositories.dictionary.DictionaryRepositoryImpl
+import com.issart.addretrofit.repositories.settings.SettingsRepositoryImpl
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -34,9 +34,7 @@ class App : Application() {
             ),
             InMemoryOpenLanguagesDataSource(),
             SimpleLanguagesConverter(
-                ResourcesLanguageNameDataSource(
-                    applicationContext
-                )
+                ResourcesLanguageNameDataSource(applicationContext)
             )
         )
 

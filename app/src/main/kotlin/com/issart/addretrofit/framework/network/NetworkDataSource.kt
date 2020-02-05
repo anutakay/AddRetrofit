@@ -1,8 +1,8 @@
 package com.issart.addretrofit.framework.network
 
 import android.util.Log
-import com.issart.addretrofit.domain.DataResult
-import com.issart.addretrofit.domain.ErrorEnum
+import com.issart.addretrofit.core.DataResult
+import com.issart.addretrofit.framework.ErrorEnum
 import retrofit2.Response
 
 open class NetworkDataSource {

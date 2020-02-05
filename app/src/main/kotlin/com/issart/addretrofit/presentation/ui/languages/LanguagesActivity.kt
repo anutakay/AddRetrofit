@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.issart.addretrofit.domain.Languages
+import com.issart.addretrofit.LanguagesEntity
 import com.issart.addretrofit.presentation.ui.SingleFragmentActivity
 
 class LanguagesActivity : SingleFragmentActivity(), LanguagesFragment.InteractionListener {
@@ -18,7 +18,7 @@ class LanguagesActivity : SingleFragmentActivity(), LanguagesFragment.Interactio
         supportActionBar?.setDisplayShowTitleEnabled(true)
     }
 
-    override fun goToDictionary(lang: Languages) {
+    override fun goToDictionary(lang: LanguagesEntity) {
         println("goToDictionary")
         val intent = Intent()
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
