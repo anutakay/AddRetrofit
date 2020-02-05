@@ -6,7 +6,7 @@ import com.issart.addretrofit.datasources.OpenLanguagesDataSource
 class InMemoryOpenLanguagesDataSource :
     OpenLanguagesDataSource<LanguagesEntity> {
 
-    private var languages = LanguagesEntity.EMPTY
+    private var languages = LanguagesEntity()
 
     override fun setOpenLanguages(value: LanguagesEntity) {
         languages = value

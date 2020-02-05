@@ -61,8 +61,8 @@ class LanguagesFragment : Fragment(), LanguagesRecyclerViewAdapter.InteractionLi
         })
 
         viewModel.openLanguages.observe(this, Observer {
-            source_language.text = it.inputName
-            result_language.text = it.outputName
+            source_language.text = it.input
+            result_language.text = it.output
         })
     }
 

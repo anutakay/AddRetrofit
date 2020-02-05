@@ -16,8 +16,8 @@ class DictionaryViewModel(
 ) : AppViewModel(app, interactors) {
 
     private val languages: MutableLiveData<LanguagesEntity> = MutableLiveData()
-    val input = Transformations.map(languages, LanguagesEntity::inputName)
-    val output = Transformations.map(languages, LanguagesEntity::outputName)
+    val input = Transformations.map(languages, LanguagesEntity::input)
+    val output = Transformations.map(languages, LanguagesEntity::output)
 
     val word: MutableLiveData<String> = MutableLiveData()
 
@@ -38,7 +38,7 @@ class DictionaryViewModel(
     fun loadOpenLanguages() = languages.postValue(interactors.getOpenLanguages())
 
     private fun lookup(word: String?, lang: LanguagesEntity?) {
-        if (word == null || lang == null || lang == LanguagesEntity.EMPTY) return
+        if (word == null || lang == null || lang.isEmpty()) return
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 interactors.lookup.invoke(

@@ -1,13 +1,8 @@
 package com.issart.addretrofit
 
 data class LanguagesEntity(
-    val input: String,
-    val inputName: String,
-    val output: String,
-    val outputName: String
+    val input: String = "",
+    val output: String = ""
 ) {
-    companion object {
-        val EMPTY =
-            LanguagesEntity("", "EMPTY", "", "EMPTY")
-    }
+    fun isEmpty() = input.isEmpty() && output.isEmpty()
 }

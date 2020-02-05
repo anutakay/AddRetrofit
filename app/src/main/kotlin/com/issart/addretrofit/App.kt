@@ -4,7 +4,6 @@ import android.app.Application
 import com.issart.addretrofit.repositories.dictionary.InMemoryOpenLanguagesDataSource
 import com.issart.addretrofit.repositories.dictionary.SimpleLanguagesConverter
 import com.issart.addretrofit.framework.device.ConfigApiKeyDataSource
-import com.issart.addretrofit.framework.device.ResourcesLanguageNameDataSource
 import com.issart.addretrofit.framework.network.DictionaryApi
 import com.issart.addretrofit.framework.network.NetworkDictionaryDataSource
 import com.issart.addretrofit.interactors.languages.GetLanguages
@@ -33,9 +32,7 @@ class App : Application() {
                 retrofit.create(DictionaryApi::class.java)
             ),
             InMemoryOpenLanguagesDataSource(),
-            SimpleLanguagesConverter(
-                ResourcesLanguageNameDataSource(applicationContext)
-            )
+            SimpleLanguagesConverter()
         )
 
         AppViewModelFactory.inject(

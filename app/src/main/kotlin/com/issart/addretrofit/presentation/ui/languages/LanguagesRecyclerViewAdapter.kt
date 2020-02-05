@@ -30,7 +30,7 @@ class LanguagesRecyclerViewAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
 
-        holder.input.text = String.format("%s -> %s", item.inputName, item.outputName)
+        holder.input.text = String.format("%s -> %s", item.input, item.output)
 
         holder.itemView.setOnClickListener {
             outputPort?.onSelected(item)
