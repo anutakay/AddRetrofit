@@ -1,7 +1,7 @@
 package com.issart.addretrofit
 
 import android.app.Application
-import com.issart.addretrofit.datasources.InMemoryOpenLanguagesDataSource
+import com.issart.addretrofit.repositories.dictionary.InMemoryOpenLanguagesDataSource
 import com.issart.addretrofit.repositories.dictionary.SimpleLanguagesConverter
 import com.issart.addretrofit.framework.device.ConfigApiKeyDataSource
 import com.issart.addretrofit.framework.device.ResourcesLanguageNameDataSource

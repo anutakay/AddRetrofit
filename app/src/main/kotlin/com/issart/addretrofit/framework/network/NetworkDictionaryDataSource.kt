@@ -6,14 +6,11 @@ import com.issart.addretrofit.datasources.DictionaryDataSource
 
 class NetworkDictionaryDataSource(
     private val dictionaryApi: DictionaryApi
-) : NetworkDataSource(), DictionaryDataSource {
+) : NetworkDataSource(), DictionaryDataSource<String, String, LookupEntity> {
 
     override suspend fun getLanguages(key: String): DataResult<List<String>> =
         safeApiCall(
-            {
-                dictionaryApi.getLangs(key)
-                //throw IOException("My exception")
-            },
+            { dictionaryApi.getLangs(key) },
             "Error during fetching list of languages"
         )
 

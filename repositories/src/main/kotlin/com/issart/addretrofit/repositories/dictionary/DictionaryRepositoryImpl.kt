@@ -8,8 +8,8 @@ import com.issart.addretrofit.datasources.DictionaryDataSource
 import com.issart.addretrofit.datasources.OpenLanguagesDataSource
 
 class DictionaryRepositoryImpl(
-    private val dictionaryDataSource: DictionaryDataSource,
-    private val openLanguagesDataSource: OpenLanguagesDataSource,
+    private val dictionaryDataSource: DictionaryDataSource<String, String, LookupEntity>,
+    private val openLanguagesDataSource: OpenLanguagesDataSource<LanguagesEntity>,
     private val languagesConverter: EntityConverter<LanguagesEntity, String>
 ) : DictionaryRepository {
     override suspend fun getLanguages(key: String): DataResult<List<LanguagesEntity>> =

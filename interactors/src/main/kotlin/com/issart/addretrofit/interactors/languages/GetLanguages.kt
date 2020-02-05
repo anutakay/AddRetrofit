@@ -2,12 +2,12 @@ package com.issart.addretrofit.interactors.languages
 
 import com.issart.addretrofit.core.DataResult
 import com.issart.addretrofit.interactors.LanguagesResultHandler
-import com.issart.addretrofit.repositories.dictionary.DictionaryRepositoryImpl
-import com.issart.addretrofit.repositories.settings.SettingsRepositoryImpl
+import com.issart.addretrofit.repositories.dictionary.DictionaryRepository
+import com.issart.addretrofit.repositories.settings.SettingsRepository
 
 class GetLanguages(
-    private var dictionaryRepository: DictionaryRepositoryImpl,
-    private var settingsRepository: SettingsRepositoryImpl
+    private var dictionaryRepository: DictionaryRepository,
+    private var settingsRepository: SettingsRepository
 ) {
     suspend operator fun invoke(
         resultHandler: LanguagesResultHandler = {}

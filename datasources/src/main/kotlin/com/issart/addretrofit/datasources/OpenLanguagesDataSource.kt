@@ -1,8 +1,6 @@
 package com.issart.addretrofit.datasources
 
-import com.issart.addretrofit.LanguagesEntity
-
-interface OpenLanguagesDataSource {
-    fun setOpenLanguages(value: LanguagesEntity)
-    fun getOpenLanguages(): LanguagesEntity
+interface OpenLanguagesDataSource<LANGUAGES> {
+    fun setOpenLanguages(value: LANGUAGES)
+    fun getOpenLanguages(): LANGUAGES
 }

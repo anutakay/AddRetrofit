@@ -1,8 +1,10 @@
-package com.issart.addretrofit.datasources
+package com.issart.addretrofit.repositories.dictionary
 
 import com.issart.addretrofit.LanguagesEntity
+import com.issart.addretrofit.datasources.OpenLanguagesDataSource
 
-class InMemoryOpenLanguagesDataSource : OpenLanguagesDataSource {
+class InMemoryOpenLanguagesDataSource :
+    OpenLanguagesDataSource<LanguagesEntity> {
 
     private var languages = LanguagesEntity.EMPTY
 

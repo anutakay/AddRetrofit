@@ -1,10 +1,10 @@
 package com.issart.addretrofit.interactors.languages
 
 import com.issart.addretrofit.LanguagesEntity
-import com.issart.addretrofit.repositories.dictionary.DictionaryRepositoryImpl
+import com.issart.addretrofit.repositories.dictionary.DictionaryRepository
 
 class GetOpenLanguages(
-    private val dictionaryRepository: DictionaryRepositoryImpl
+    private val dictionaryRepository: DictionaryRepository
 ) {
     operator fun invoke(): LanguagesEntity = dictionaryRepository.getOpenLanguages()
 }
