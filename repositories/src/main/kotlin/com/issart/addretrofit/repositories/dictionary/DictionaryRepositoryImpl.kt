@@ -14,9 +14,9 @@ class DictionaryRepositoryImpl(
 ) : DictionaryRepository {
     override suspend fun getLanguages(key: String): DataResult<List<LanguagesEntity>> =
         when (val result = dictionaryDataSource.getLanguages(key)) {
-            is DataResult.Success -> DataResult.Success(result.data.map {
-                languagesConverter.toEntity(it)
-            })
+            is DataResult.Success -> DataResult.Success(
+                result.data.map { languagesConverter.toEntity(it) }
+            )
             is DataResult.SpecificError<*> -> result
             is DataResult.CommonError -> result
         }

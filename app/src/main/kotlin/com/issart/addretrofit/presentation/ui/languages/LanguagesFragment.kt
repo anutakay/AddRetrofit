@@ -78,10 +78,9 @@ class LanguagesFragment : Fragment(), LanguagesRecyclerViewAdapter.InteractionLi
 
         with(viewModel) {
             list.observe(viewLifecycleOwner, Observer { adapter.values = it })
-            openLanguages.observe(viewLifecycleOwner, Observer {
-                source_language.text = it.input
-                result_language.text = it.output
-            })
+            input.observe(viewLifecycleOwner, Observer { source_language.text = it })
+            output.observe(viewLifecycleOwner, Observer { result_language.text = it })
+
             loadOpenLanguages()
             loadLanguagesList()
         }

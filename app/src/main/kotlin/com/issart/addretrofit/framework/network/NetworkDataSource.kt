@@ -22,7 +22,11 @@ open class NetworkDataSource {
     ): DataResult<T> {
         val response = call.invoke()
         return when (response.isSuccessful) {
-            true -> DataResult.Success(response.body()!!)
+            true -> if (response.body() != null) {
+                DataResult.Success(response.body()!!)
+            } else {
+                DataResult.SpecificError(ErrorEnum.EMPTY_BODY_RESPONSE_ERROR, errorMessage)
+            }
             else -> DataResult.SpecificError(ErrorEnum.SPECIFIC_RESPONSE_ERROR, errorMessage)
         }
     }
