@@ -8,21 +8,26 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.issart.addretrofit.AppViewModelFactory
+import androidx.lifecycle.ViewModelProvider
+import com.issart.addretrofit.App
 import com.issart.addretrofit.LanguagesEntity
 import com.issart.addretrofit.R
+import com.issart.addretrofit.di.viewmodel.AppViewModelFactory
 import com.issart.addretrofit.presentation.IntentUtil
 import com.issart.addretrofit.presentation.IntentUtil.INPUT_LANGUAGE
 import com.issart.addretrofit.presentation.IntentUtil.OUTPUT_LANGUAGE
 import kotlinx.android.synthetic.main.fragment_languages.*
 import kotlinx.android.synthetic.main.languages_current.*
 import kotlinx.android.synthetic.main.languages_list.*
+import javax.inject.Inject
 
 class LanguagesFragment : Fragment(), LanguagesRecyclerViewAdapter.InteractionListener {
     private val adapter: LanguagesRecyclerViewAdapter = LanguagesRecyclerViewAdapter()
 
     private var outputPort: InteractionListener? = null
+
+    @Inject
+    lateinit var factory: AppViewModelFactory
     private lateinit var viewModel: LanguagesViewModel
 
     override fun onAttach(context: Context) {
@@ -45,9 +50,8 @@ class LanguagesFragment : Fragment(), LanguagesRecyclerViewAdapter.InteractionLi
 
         adapter.outputPort = this
 
-        viewModel = ViewModelProviders
-            .of(this, AppViewModelFactory)
-            .get(LanguagesViewModel::class.java)
+        App.component.inject(this)
+        viewModel = ViewModelProvider(this, factory).get(LanguagesViewModel::class.java)
 
         when (activity?.intent?.getIntExtra(IntentUtil.LANGUAGE_EXTRA, -1)) {
             INPUT_LANGUAGE -> {
@@ -55,15 +59,6 @@ class LanguagesFragment : Fragment(), LanguagesRecyclerViewAdapter.InteractionLi
             OUTPUT_LANGUAGE -> {
             }
         }
-
-        viewModel.list.observe(this, Observer {
-            adapter.values = it
-        })
-
-        viewModel.openLanguages.observe(this, Observer {
-            source_language.text = it.input
-            result_language.text = it.output
-        })
     }
 
     override fun onCreateView(
@@ -82,6 +77,11 @@ class LanguagesFragment : Fragment(), LanguagesRecyclerViewAdapter.InteractionLi
         }
 
         with(viewModel) {
+            list.observe(viewLifecycleOwner, Observer { adapter.values = it })
+            openLanguages.observe(viewLifecycleOwner, Observer {
+                source_language.text = it.input
+                result_language.text = it.output
+            })
             loadOpenLanguages()
             loadLanguagesList()
         }

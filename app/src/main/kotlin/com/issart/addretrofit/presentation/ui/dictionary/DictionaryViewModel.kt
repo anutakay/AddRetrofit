@@ -2,18 +2,17 @@ package com.issart.addretrofit.presentation.ui.dictionary
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.issart.addretrofit.AppViewModel
 import com.issart.addretrofit.Interactors
 import com.issart.addretrofit.LanguagesEntity
 import com.issart.addretrofit.LookupEntity
+import com.issart.addretrofit.di.viewmodel.AppViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class DictionaryViewModel(
-    app: Application,
-    interactors: Interactors
-) : AppViewModel(app, interactors) {
+class DictionaryViewModel
+@Inject constructor(app: Application, private val interactors: Interactors) : AppViewModel(app) {
 
     private val languages: MutableLiveData<LanguagesEntity> = MutableLiveData()
     val input = Transformations.map(languages, LanguagesEntity::input)
@@ -41,9 +40,7 @@ class DictionaryViewModel(
         if (word == null || lang == null || lang.isEmpty()) return
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                interactors.lookup.invoke(
-                    lang, word,
-                    resultHandler = { rawLookupResult.postValue(it) })
+                interactors.lookup(lang, word) { rawLookupResult.postValue(it) }
             }
         }
     }
