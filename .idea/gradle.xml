@@ -9,11 +9,12 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/core" />
-            <option value="$PROJECT_DIR$/datasources" />
-            <option value="$PROJECT_DIR$/domain" />
-            <option value="$PROJECT_DIR$/interactors" />
-            <option value="$PROJECT_DIR$/repositories" />
+            <option value="$PROJECT_DIR$/base" />
+            <option value="$PROJECT_DIR$/feature_dictionary" />
+            <option value="$PROJECT_DIR$/layer_data" />
+            <option value="$PROJECT_DIR$/layer_domain" />
+            <option value="$PROJECT_DIR$/layer_usecases" />
+            <option value="$PROJECT_DIR$/repository_dictionary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

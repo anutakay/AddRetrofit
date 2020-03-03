@@ -6,7 +6,9 @@
     <item android:id="@android:id/mask">
         <shape android:shape="oval">
             <solid android:color="@color/secondaryDarkColor" />
-            <size android:width="40dp" android:height="40dp"/>
+            <size
+                android:width="40dp"
+                android:height="40dp" />
         </shape>
     </item>
 </ripple>

@@ -1,2 +1,2 @@
-include ':app', ':interactors', ':core', ':datasources', ':domain', ':repositories'
+include ':app', ':layer_domain', ':layer_data', ':base', ':feature_dictionary', ':layer_usecases', ':repository_dictionary'
 rootProject.name='AddRetrofit'

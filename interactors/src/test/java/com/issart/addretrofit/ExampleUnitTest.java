@@ -1,9 +1,12 @@
 package com.issart.addretrofit;
 
 import com.issart.addretrofit.core.DataResult;
-import com.issart.addretrofit.interactors.lookup.Lookup;
-import com.issart.addretrofit.repositories.dictionary.DictionaryRepository;
-import com.issart.addretrofit.repositories.settings.SettingsRepository;
+import com.issart.addretrofit.entities.Head;
+import com.issart.addretrofit.entities.LanguagesEntity;
+import com.issart.addretrofit.entities.LookupEntity;
+import com.issart.addretrofit.usecases.lookup.Lookup;
+import com.issart.addretrofit.repositories.DictionaryRepository;
+import com.issart.addretrofit.repositories.SettingsRepository;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
